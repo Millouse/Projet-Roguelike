@@ -4,4 +4,13 @@
 
 [node name="root" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -29.0
+offset_top = -8.0
+offset_right = 11.0
+offset_bottom = 32.0
+scale = Vector2(30.9428, 16.7627)
+color = Color(0.317178, 0.652456, 5.77569e-07, 1)
+
 [node name="Player" parent="." instance=ExtResource("1_g68mf")]
+position = Vector2(658, 339)
