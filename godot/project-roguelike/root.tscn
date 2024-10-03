@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://de65qx2m4f38"]
+[gd_scene load_steps=3 format=3 uid="uid://de65qx2m4f38"]
 
 [ext_resource type="PackedScene" uid="uid://phnir8ekgfth" path="res://player.tscn" id="1_g68mf"]
+[ext_resource type="PackedScene" uid="uid://dhr8ga758yba2" path="res://orc.tscn" id="2_m2ee3"]
 
 [node name="root" type="Node2D"]
 
@@ -13,4 +14,7 @@ scale = Vector2(30.9428, 16.7627)
 color = Color(0.317178, 0.652456, 5.77569e-07, 1)
 
 [node name="Player" parent="." instance=ExtResource("1_g68mf")]
-position = Vector2(658, 339)
+position = Vector2(654, 370)
+
+[node name="Orc" parent="." instance=ExtResource("2_m2ee3")]
+position = Vector2(333, 360)
