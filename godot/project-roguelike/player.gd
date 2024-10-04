@@ -12,6 +12,7 @@ var direction: Vector2 # Direction of the player
 
 # State
 var is_shooting = false
+var is_dashing = false
 
 # Animation var
 var flipH = false
@@ -42,10 +43,12 @@ func _physics_process(_delta: float) -> void:
 		else:
 			flipH = false
 	sprite.set_flip_h(flipH)
-	if direction != Vector2.ZERO:
-		anim_name = "walk"
-	elif is_shooting:
+	if is_shooting:
 		anim_name = "shoot_arrow"
+	elif is_dashing:
+		anim_name = "dash"
+	elif direction != Vector2.ZERO:
+		anim_name = "walk"
 	else:
 		anim_name = "idle"
 	sprite.play(anim_name)
@@ -56,16 +59,22 @@ func _input(_event: InputEvent) -> void:
 		get_tree().reload_current_scene()
 
 	if Input.is_action_just_pressed("fire"):
-		print("je tire mgl")
-		is_shooting = true
-		await get_tree().create_timer(0.5).timeout
-		shoot_arrow()
+		if is_shooting == false:
+			is_shooting = true
+			await get_tree().create_timer(0.5).timeout
+			shoot_arrow()
+		
+	if Input.is_action_just_pressed("dash"):
+		is_dashing = true
 		
 
 
 func _on_animated_sprite_2d_animation_finished() -> void:
+	print(anim_name)
 	if anim_name == "shoot_arrow":
 		is_shooting = false
+	if anim_name == "dash":
+		is_dashing = false
 
 func shoot_arrow() -> void:
 	# Instanciate one arrow

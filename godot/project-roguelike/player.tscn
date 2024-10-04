@@ -1,8 +1,20 @@
-[gd_scene load_steps=30 format=3 uid="uid://phnir8ekgfth"]
+[gd_scene load_steps=33 format=3 uid="uid://phnir8ekgfth"]
 
 [ext_resource type="Texture2D" uid="uid://dyyes4rvmnvgd" path="res://assets/Soldier/Soldier.png" id="1_l2mqj"]
 [ext_resource type="Script" path="res://player.gd" id="1_nfj1i"]
 [ext_resource type="Texture2D" uid="uid://d08cojrt06km5" path="res://assets/Soldier/Attack/Soldier-Attack03.png" id="3_7o4qp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e0iw1"]
+atlas = ExtResource("1_l2mqj")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5et4"]
+atlas = ExtResource("1_l2mqj")
+region = Rect2(700, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3s3b"]
+atlas = ExtResource("1_l2mqj")
+region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bdc8k"]
 atlas = ExtResource("1_l2mqj")
@@ -104,6 +116,20 @@ region = Rect2(700, 100, 100, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_e0iw1")
+}, {
+"duration": 6.0,
+"texture": SubResource("AtlasTexture_l5et4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3s3b")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_bdc8k")
 }, {
 "duration": 1.0,
@@ -200,10 +226,8 @@ script = ExtResource("1_nfj1i")
 position = Vector2(-47, 0)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_qj7yf")
-animation = &"shoot_arrow"
+animation = &"idle"
 autoplay = "idle"
-frame = 8
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-51, -8.5)

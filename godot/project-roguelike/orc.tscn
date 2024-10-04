@@ -1,6 +1,23 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhr8ga758yba2"]
+[gd_scene load_steps=15 format=3 uid="uid://dhr8ga758yba2"]
 
+[ext_resource type="Script" path="res://orc.gd" id="1_rfqok"]
 [ext_resource type="Texture2D" uid="uid://clwd1ok7fk0qu" path="res://assets/Orc/Orc.png" id="1_y1d6g"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1yjn"]
+atlas = ExtResource("1_y1d6g")
+region = Rect2(0, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6fg3o"]
+atlas = ExtResource("1_y1d6g")
+region = Rect2(100, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulnqn"]
+atlas = ExtResource("1_y1d6g")
+region = Rect2(200, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp1jm"]
+atlas = ExtResource("1_y1d6g")
+region = Rect2(300, 500, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gcxey"]
 atlas = ExtResource("1_y1d6g")
@@ -30,6 +47,23 @@ region = Rect2(500, 0, 100, 100)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_a1yjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6fg3o")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_ulnqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sp1jm")
+}],
+"loop": false,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_gcxey")
 }, {
 "duration": 1.0,
@@ -55,14 +89,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajvmu"]
 size = Vector2(56, 65)
 
-[node name="Orc" type="CharacterBody2D"]
+[node name="Orc" type="CharacterBody2D" groups=["enemy"]]
+script = ExtResource("1_rfqok")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_wvyl4")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.245138
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(3, -3.5)
